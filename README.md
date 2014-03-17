@@ -40,7 +40,8 @@ Ensure you're using the files from the `dist` directory (contains compiled produ
   <!-- html above -->
   <script src="dist/lunar.js"></script>
   <script>
-  lunar.addClass(document.body, 'js');
+  var svg = document.querySelector('.myClass');
+  Lunar.addClass(svg, 'js');
   </script>
 </body>
 ```
