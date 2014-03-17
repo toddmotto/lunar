@@ -41,7 +41,7 @@ Ensure you're using the files from the `dist` directory (contains compiled produ
   <script src="dist/lunar.js"></script>
   <script>
   var svg = document.querySelector('.myClass');
-  Lunar.addClass(svg, 'js');
+  Lunar.addClass(svg, 'mySVGClass');
   </script>
 </body>
 ```
