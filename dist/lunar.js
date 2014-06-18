@@ -1,43 +1,35 @@
-/*! Lunar v1.0.0 | (c) 2014 @toddmotto | github.com/toddmotto/lunar */
+/*! lunar.js v1.1.0 | (c) 2014 @toddmotto | https://github.com/toddmotto/lunar */
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define([], factory);
+    define(factory);
   } else if (typeof exports === 'object') {
     module.exports = factory;
   } else {
-    root.Lunar = factory();
+    root.lunar = factory();
   }
 })(this, function () {
 
   'use strict';
 
-  var exports = {};
+  var lunar = {};
 
-  exports.hasClass = function (elem, className) {
-    return new RegExp('(\\s|^)' + className + '(\\s|$)').test(elem.getAttribute('class'));
+  lunar.hasClass = function (elem, name) {
+    return new RegExp('(\\s|^)' + name + '(\\s|$)').test(elem.getAttribute('class'));
   };
 
-  exports.addClass = function (elem, className) {
-    if (!exports.hasClass(elem, className)) {
-      elem.setAttribute('class', elem.getAttribute('class') + ' ' + className);
-    }
+  lunar.addClass = function (elem, name) {
+    !lunar.hasClass(elem, name) && elem.setAttribute('class', (!!elem.getAttribute('class') ? elem.getAttribute('class') + ' ' : '') + name);
   };
 
-  exports.removeClass = function (elem, className) {
-    var remove = elem.getAttribute('class').replace(new RegExp('(\\s|^)' + className + '(\\s|$)', 'g'), '$2');
-    if (exports.hasClass(elem, className)) {
-      elem.setAttribute('class', remove);
-    }
+  lunar.removeClass = function (elem, name) {
+    var remove = elem.getAttribute('class').replace(new RegExp('(\\s|^)' + name + '(\\s|$)', 'g'), '$2');
+    lunar.hasClass(elem, name) && elem.setAttribute('class', remove);
   };
 
-  exports.toggleClass = function (elem, className) {
-    if (exports.hasClass(elem, className)) {
-      exports.removeClass(elem, className);
-    } else {
-      exports.addClass(elem, className);
-    }
+  lunar.toggleClass = function (elem, name) {
+    lunar[lunar.hasClass(elem, name) ? 'removeClass' : 'addClass'](elem, name);
   };
 
-  return exports;
+  return lunar;
 
 });

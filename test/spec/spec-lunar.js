@@ -1,7 +1,7 @@
 /**
- * Lunar.js
+ * lunar.js
  */
-describe('Lunar', function () {
+describe('lunar', function () {
 
   var $$ = function (selector) {
     return document.querySelector(selector);
@@ -24,7 +24,7 @@ describe('Lunar', function () {
     beforeEach(function () {
       injectSVG();
       svg = $$('.mySVG');
-      Lunar.addClass(svg, 'test');
+      lunar.addClass(svg, 'test');
     });
 
     it('should add a class', function () {
@@ -43,12 +43,12 @@ describe('Lunar', function () {
     beforeEach(function () {
       injectSVG();
       svg = $$('.mySVG');
-      Lunar.addClass(svg, 'test');
+      lunar.addClass(svg, 'test');
     });
 
     it('should boolean evaluate class existence', function () {
-      expect(Lunar.hasClass(svg, 'test')).toBe(true);
-      expect(Lunar.hasClass(svg, 'testFalse')).toBe(false);
+      expect(lunar.hasClass(svg, 'test')).toBe(true);
+      expect(lunar.hasClass(svg, 'testFalse')).toBe(false);
     });
 
   });
@@ -63,12 +63,12 @@ describe('Lunar', function () {
     beforeEach(function () {
       injectSVG();
       svg = $$('.mySVG');
-      Lunar.addClass(svg, 'test');
-      Lunar.removeClass(svg, 'test');
+      lunar.addClass(svg, 'test');
+      lunar.removeClass(svg, 'test');
     });
 
     it('should remove the class', function () {
-      expect(Lunar.hasClass(svg, 'test')).toBe(false);
+      expect(lunar.hasClass(svg, 'test')).toBe(false);
     });
 
   });
@@ -83,13 +83,13 @@ describe('Lunar', function () {
     beforeEach(function () {
       injectSVG();
       svg = $$('.mySVG');
-      Lunar.toggleClass(svg, 'mySVG');
-      Lunar.toggleClass(svg, 'test');
+      lunar.toggleClass(svg, 'mySVG');
+      lunar.toggleClass(svg, 'test');
     });
 
     it('should toggle both classes, adding one and removing the other', function () {
-      expect(Lunar.hasClass(svg, 'test')).toBe(true);
-      expect(Lunar.hasClass(svg, 'mySVG')).toBe(false);
+      expect(lunar.hasClass(svg, 'test')).toBe(true);
+      expect(lunar.hasClass(svg, 'mySVG')).toBe(false);
     });
 
   });

@@ -2,6 +2,7 @@
   "node": true,
   "browser": true,
   "esnext": true,
+  "expr": true,
   "bitwise": true,
   "camelcase": true,
   "curly": false,
@@ -17,7 +18,6 @@
   "unused": false,
   "trailing": false,
   "globals" : {
-    "Vault": true,
     "define": true
   }
 }
