@@ -9,7 +9,7 @@ describe('lunar', function () {
 
   var injectSVG = function () {
     var template = '<svg id="svg" xmlns="http://www.w3.org/2000/svg" version="1.1" height="190">' +
-                     '<circle cx="100" cy="50" r="40" fill="red" class="mySVG" />' +
+                     '<circle cx="100" cy="50" r="40" fill="red"/>' +
                    '</svg>';
     document.body.innerHTML = template;
   };
@@ -23,7 +23,7 @@ describe('lunar', function () {
 
     beforeEach(function () {
       injectSVG();
-      svg = $$('.mySVG');
+      svg = $$('circle');
       lunar.addClass(svg, 'test');
     });
 
@@ -42,7 +42,7 @@ describe('lunar', function () {
 
     beforeEach(function () {
       injectSVG();
-      svg = $$('.mySVG');
+      svg = $$('circle');
       lunar.addClass(svg, 'test');
     });
 
@@ -62,7 +62,7 @@ describe('lunar', function () {
 
     beforeEach(function () {
       injectSVG();
-      svg = $$('.mySVG');
+      svg = $$('circle');
       lunar.addClass(svg, 'test');
       lunar.removeClass(svg, 'test');
     });
@@ -82,8 +82,9 @@ describe('lunar', function () {
 
     beforeEach(function () {
       injectSVG();
-      svg = $$('.mySVG');
+      svg = $$('circle');
       lunar.toggleClass(svg, 'mySVG');
+	  lunar.toggleClass(svg, 'mySVG');
       lunar.toggleClass(svg, 'test');
     });
 
