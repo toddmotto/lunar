@@ -21,7 +21,12 @@
   };
 
   lunar.removeClass = function (elem, name) {
-    var remove = elem.getAttribute('class').replace(new RegExp('(\\s|^)' + name + '(\\s|$)', 'g'), '$2');
+	var classAttr=elem.getAttribute('class');
+	if(classAttr===null){
+		elem.setAttribute('class', '');
+		classAttr='';
+	}
+    var remove = classAttr.replace(new RegExp('(\\s|^)' + name + '(\\s|$)', 'g'), '$2');
     lunar.hasClass(elem, name) && elem.setAttribute('class', remove);
   };
 
