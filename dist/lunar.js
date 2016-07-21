@@ -15,25 +15,27 @@
     return el.getAttribute('class');
   }
 
-  var lunar = {};
-
-  lunar.hasClass = function (elem, name) {
+  function has(elem, name) {
     return new RegExp('(\\s|^)' + name + '(\\s|$)').test(get(elem));
+  }
+
+  function add(elem, name) {
+    !has(elem, name) && elem.setAttribute('class', (get(elem) && get(elem) + ' ') + name);
+  }
+
+  function remove(elem, name) {
+    var news = get(elem).replace(new RegExp('(\\s|^)' + name + '(\\s|$)', 'g'), '$2');
+    has(elem, name) && elem.setAttribute('class', news);
+  }
+
+  function toggle(elem, name) {
+    (has(elem, name) ? remove : add)(elem, name);
+  }
+
+  return {
+    hasClass: has,
+    addClass: add,
+    removeClass: remove,
+    toggleClass: toggle
   };
-
-  lunar.addClass = function (elem, name) {
-    !lunar.hasClass(elem, name) && elem.setAttribute('class', (get(elem) && get(elem) + ' ') + name);
-  };
-
-  lunar.removeClass = function (elem, name) {
-    var remove = get(elem).replace(new RegExp('(\\s|^)' + name + '(\\s|$)', 'g'), '$2');
-    lunar.hasClass(elem, name) && elem.setAttribute('class', remove);
-  };
-
-  lunar.toggleClass = function (elem, name) {
-    lunar[lunar.hasClass(elem, name) ? 'removeClass' : 'addClass'](elem, name);
-  };
-
-  return lunar;
-
 });
