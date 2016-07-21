@@ -10,18 +10,22 @@
 
   'use strict';
 
+  function get(el) {
+    return el.getAttribute('class');
+  }
+
   var lunar = {};
 
   lunar.hasClass = function (elem, name) {
-    return new RegExp('(\\s|^)' + name + '(\\s|$)').test(elem.getAttribute('class'));
+    return new RegExp('(\\s|^)' + name + '(\\s|$)').test(get(elem));
   };
 
   lunar.addClass = function (elem, name) {
-    !lunar.hasClass(elem, name) && elem.setAttribute('class', (!!elem.getAttribute('class') ? elem.getAttribute('class') + ' ' : '') + name);
+    !lunar.hasClass(elem, name) && elem.setAttribute('class', (get(elem) && get(elem) + ' ') + name);
   };
 
   lunar.removeClass = function (elem, name) {
-    var remove = elem.getAttribute('class').replace(new RegExp('(\\s|^)' + name + '(\\s|$)', 'g'), '$2');
+    var remove = get(elem).replace(new RegExp('(\\s|^)' + name + '(\\s|$)', 'g'), '$2');
     lunar.hasClass(elem, name) && elem.setAttribute('class', remove);
   };
 

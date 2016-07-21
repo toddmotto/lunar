@@ -1,4 +1,4 @@
-/*! lunar.js v1.1.0 | (c) 2014 @toddmotto | https://github.com/toddmotto/lunar */
+/*! lunar.js v1.1.0 | (c) 2016 @toddmotto | https://github.com/toddmotto/lunar */
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     define(factory);
@@ -11,18 +11,22 @@
 
   'use strict';
 
+  function get(el) {
+    return el.getAttribute('class');
+  }
+
   var lunar = {};
 
   lunar.hasClass = function (elem, name) {
-    return new RegExp('(\\s|^)' + name + '(\\s|$)').test(elem.getAttribute('class'));
+    return new RegExp('(\\s|^)' + name + '(\\s|$)').test(get(elem));
   };
 
   lunar.addClass = function (elem, name) {
-    !lunar.hasClass(elem, name) && elem.setAttribute('class', (!!elem.getAttribute('class') ? elem.getAttribute('class') + ' ' : '') + name);
+    !lunar.hasClass(elem, name) && elem.setAttribute('class', (get(elem) && get(elem) + ' ') + name);
   };
 
   lunar.removeClass = function (elem, name) {
-    var remove = elem.getAttribute('class').replace(new RegExp('(\\s|^)' + name + '(\\s|$)', 'g'), '$2');
+    var remove = get(elem).replace(new RegExp('(\\s|^)' + name + '(\\s|$)', 'g'), '$2');
     lunar.hasClass(elem, name) && elem.setAttribute('class', remove);
   };
 
