@@ -5,6 +5,7 @@
   "author": "@toddmotto",
   "license": "MIT",
   "homepage": "https://github.com/toddmotto/lunar",
+  "main": "dist/lunar.js",
   "devDependencies": {
     "gulp": "~3.7.0",
     "gulp-uglify": "~0.3.0",
